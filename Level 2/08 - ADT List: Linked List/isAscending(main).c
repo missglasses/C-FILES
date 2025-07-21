@@ -43,10 +43,12 @@ int main() {
     printList(head);
 
     // [ANSWER No. 2] Add function call for isDescending()
-    if(isAscending(head)){
-        printf("The list is in ascending order.");
+   
+   if (n > 0) {
+    if (isDescending(head)) {
+        printf("The list is in descending order.\n");
     } else {
-        printf("The list is not in ascending order.");
+        printf("The list is not in descending order.\n");
     }
 
 
