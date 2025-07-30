@@ -35,7 +35,7 @@ void initVirtualHeap(VH vh) {
 int main() {
     VirtualHeap heap;
     initVirtualHeap(&heap);  // pass address using VH alias
-
+    //more chuchuness here...
     free(heap.Nodes);
 
     return 0;
