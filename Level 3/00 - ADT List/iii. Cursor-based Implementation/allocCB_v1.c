@@ -34,42 +34,14 @@ int allocSpace(VirtualHeap *VH) {
     return idx; 
 }
 
-void freeSpace(VirtualHeap *VH, int idx) {
-    VH->nodes[idx].link = VH->avail;
-    VH->avail = idx;
-}
-
-void insertFirst(VirtualHeap *VH, CList *L, char elem) {
-    int newNode = allocSpace(VH);
-    if (newNode != -1) {
-        VH->nodes[newNode].data = elem; 
-        VH->nodes[newNode].link = *L; ///if not empty, this points to the previous first node
-        *L = newNode; //makes myList point to the node that was just taken from the current avail.
-    } else {
-        printf("No more space!\n");
-    }
-}
-
-void displayList(VirtualHeap VH, CList L) {
-    printf("List: ");
-    while (L != -1) {
-        printf("%c -> ", VH.nodes[L].data);
-        L = VH.nodes[L].link;
-    }
-    printf("NULL\n");
-}
-
+//some code...........
 int main() {
     VirtualHeap VH;
     CList myList;
 
     initVH(&VH);
     initList(&myList);
-
-    insertFirst(&VH, &myList, 'A');
-    insertFirst(&VH, &myList, 'B');
-
-    displayList(VH, myList);
+    //the rest of the code...
 
     return 0;
 }
