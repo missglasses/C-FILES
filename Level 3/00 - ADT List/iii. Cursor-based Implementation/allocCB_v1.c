@@ -29,7 +29,7 @@ void initList(CList *L) {
 int allocSpace(VirtualHeap *VH) {
     int idx = VH->avail;
     if (idx != -1) {
-        VH->avail = VH->nodes[idx].link;  
+        VH->avail = VH->nodes[idx].link;  //update avail to point to the next free node (from 0 to 1 at first)
     }
     return idx; 
 }
@@ -44,7 +44,7 @@ void insertFirst(VirtualHeap *VH, CList *L, char elem) {
     if (newNode != -1) {
         VH->nodes[newNode].data = elem; 
         VH->nodes[newNode].link = *L; ///if not empty, this points to the previous first node
-        *L = newNode; //head of the list is updated to the new node--now the new node becomes the first element in the list.
+        *L = newNode; //makes myList point to the node that was just taken from the current avail.
     } else {
         printf("No more space!\n");
     }
