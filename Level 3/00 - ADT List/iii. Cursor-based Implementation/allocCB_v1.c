@@ -17,7 +17,7 @@ void initVH(VirtualHeap *VH) {
     int i;
     VH->avail = 0;
     for (i = 0; i < MAX - 1; i++) {
-        VH->nodes[i].link = i + 1;  // populates link 1-n until not max-1
+        VH->nodes[i].link = i + 1;  // populates link 1-n until max-1
     }
     VH->nodes[MAX - 1].link = -1;  //indicates last
 }
