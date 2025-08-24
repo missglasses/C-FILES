@@ -22,7 +22,7 @@ void initVirtualHeap(VHeap VH) {
         VH->Nodes[i].link = i - 1;
     }
 
-    VH->Nodes[0].link = -1;  // marks the end of the free list
+    VH->Nodes[i].link = -1;  // marks the end of the free list
 }
 
 int main() {
