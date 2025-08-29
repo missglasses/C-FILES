@@ -1,43 +1,54 @@
 #include <stdio.h>
-#include <string.h>
-#define MAX 10
+#include <stdlib.h>
 
-typedef struct
-{
-    char elem[MAX];
-    int count;
-} LIST;
+typedef struct node {
+    char data;
+    struct node *link;
+} cellType, *LIST;
 
-void insertLast(LIST *A, char elem)
-{
-    if (A->count < MAX)
-    {
-        A->elem[A->count] = elem;
-        A->count++;
-    }
-    else
-    {
-        printf("Full");
+void insertLast(LIST *L, char elem) {
+    LIST newNode = (LIST)malloc(sizeof(cellType));
+    newNode->data = elem;
+    newNode->link = NULL;
+    
+    if (*L == NULL) {
+       //if list is empty, newnode becomes the head/first node
+        *L = newNode; //first node is P 
+    } else {
+        // traverse until last node
+        LIST temp = *L; //temp points to first node
+        while (temp->link != NULL) {
+            temp = temp->link; //temp points to next node
+        }
+        // last node will connect to new node
+        temp->link = newNode;
     }
 }
 
-int main()
-{
-    LIST A = {{'P', 'A', 'N', 'T'}, 4}; // init array
+int main() {
+    LIST L = NULL; //empty LL
+    
+    // init list list: P -> A -> N -> T
+    insertLast(&L, 'P');
+    insertLast(&L, 'A');
+    insertLast(&L, 'N');
+    insertLast(&L, 'T');
 
     printf("Before: ");
-    for (int i = 0; i < A.count; i++)
-    {
-        printf("%c ", A.elem[i]); // P A N T
+    LIST temp = L;
+    while (temp != NULL) {
+        printf("%c ", temp->data); // P A N T
+        temp = temp->link;
     }
     printf("\n");
 
-    insertLast(&A, 'S');
+    insertLast(&L, 'S');
 
-    printf("After inserting 'L' at pos 1: ");
-    for (int i = 0; i < A.count; i++)
-    {
-        printf("%c ", A.elem[i]); // P A N T S
+    printf("After insertion: "); 
+    temp = L;
+    while (temp != NULL) {
+        printf("%c ", temp->data); // P A N T S
+        temp = temp->link;
     }
     printf("\n");
 
