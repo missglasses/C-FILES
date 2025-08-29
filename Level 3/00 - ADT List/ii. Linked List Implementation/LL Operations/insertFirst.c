@@ -31,7 +31,7 @@ int main()
     printf("Before: ");
     for (int i = 0; i < A.count; i++)
     {
-        printf("%c ", A.elem[i]); // P A N T
+        printf("%c ", A.elem[i]); // A N T s
     }
     printf("\n");
 
